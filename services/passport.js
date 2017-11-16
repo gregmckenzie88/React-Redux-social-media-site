@@ -5,7 +5,6 @@ const keys = require("../config/keys.js");
 
 const User = mongoose.model("users");
 
-
 ////////////////////////////
 /// CREATE SESSION TOKEN ///
 ////////////////////////////
@@ -15,10 +14,9 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .then(user => {
-      done(null, user);
-    })
+  User.findById(id).then(user => {
+    done(null, user);
+  });
 });
 
 ///////////////////////
@@ -33,23 +31,26 @@ passport.use(
       callbackURL: "/auth/google/callback",
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    async (accessToken, refreshToken, profile, done) => {
       // console.log("access token: ", accessToken);
       // console.log("refresh token: ", refreshToken);
-      // console.log("profile: ", profile);
-      User.findOne({ googleId: profile.id }).then(existingUser => {
-        if (existingUser) {
-          //we already have a user instance for them
-          done(null, existingUser);
-        } else {
-          //create a user instance for them
-          new User({
-            googleId: profile.id
-          })
-            .save()
-            .then(user => done(null, user));
-        }
-      });
+      console.log("profile: ", profile);
+      const existingUser = await User.findOne({ googleId: profile.id });
+
+      if (existingUser) {
+        //we already have a user instance for them
+        done(null, existingUser);
+      } else {
+        //create a user instance for them
+        const user = await new User({
+          googleId: profile.id,
+          name: {
+            first: profile.name.givenName,
+            last: profile.name.familyName
+          }
+        }).save();
+        done(null, user);
+      }
     }
   )
 );
