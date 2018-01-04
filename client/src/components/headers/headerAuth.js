@@ -8,7 +8,6 @@ class HeaderAuth extends Component {
     }
   }
   render(props){
-    console.log('header: ', this.props)
     return(
       <nav className="navbar navbar-default">
         <div className="container-fluid container">

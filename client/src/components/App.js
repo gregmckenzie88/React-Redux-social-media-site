@@ -8,9 +8,11 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 
 import Header from './Header.js';
-import Footer from './Footer.js';
+// import Footer from './Footer.js';
 import Main from './Main.js';
 import SearchTalent from './search/SearchTalent.js';
+import ProfileNew from './profile/ProfileNew.js';
+import ProfileShow from './profile/ProfileShow.js';
 
 
 const SearchProject = () => <h2>Project Search</h2>;
@@ -32,14 +34,16 @@ class App extends Component {
 
             <Route path="/search/talent" component={SearchTalent} />
             <Route path="/search/project" component={SearchProject} />
+            <Route path="/profile/new" component={ProfileNew} />
 
-            <Footer />
+            <Route path="/profile/details/:id" component={ProfileShow} />
+
+            {/* <Footer /> */}
           </div>
         </BrowserRouter>
       </div>
     );
   }
 }
-
 
 export default connect(null, actions)(App);

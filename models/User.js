@@ -7,6 +7,16 @@ const userSchema = new Schema({
   name: {
     first: String,
     last: String
+  },
+  profile: {
+    usernameName: String,
+    age: String,
+    city: String,
+    gender: String,
+    lookingFor: String,
+    headline: String,
+    selfSummary: String,
+    embarrassingAdmition: String
   }
 });
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class Dashboard extends Component {
@@ -13,10 +14,10 @@ class Dashboard extends Component {
 
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">Panel title</h3>
+                <h3 className="panel-title">Profile</h3>
               </div>
               <div className="panel-body">
-                Panel content
+                <Link to='/profile/new'>Build your profile</Link>
               </div>
             </div>
 

@@ -7,7 +7,6 @@ import Dashboard from './dashboard/Dashboard.js';
 
 class Main extends Component {
   render(){
-    console.log(this.props.auth)
     ////////////////////////
     /// LOGGED OUT STATE ///
     ////////////////////////

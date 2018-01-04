@@ -6,7 +6,9 @@ import HeaderNoAuth from './headers/headerNoAuth.js';
 
 class Header extends Component {
   render(){
-    console.log(this.props.auth);
+    
+    console.log(this.props);
+
     if(this.props.auth === false){
       return <HeaderNoAuth />
     } else if (this.props.auth === null) {
