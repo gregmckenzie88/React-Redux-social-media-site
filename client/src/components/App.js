@@ -14,7 +14,6 @@ import SearchTalent from './search/SearchTalent.js';
 import ProfileNew from './profile/ProfileNew.js';
 import ProfileShow from './profile/ProfileShow.js';
 
-
 const SearchProject = () => <h2>Project Search</h2>;
 
 

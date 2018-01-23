@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import io from 'socket.io-client';
 
 import axios from 'axios';
 
@@ -7,13 +8,20 @@ class ProfileShow extends Component {
   constructor(props){
     super(props)
     this.state = {
-      res: {}
+      res: {},
+      //for socket.io
+      messages: []
     };
   }
   componentDidMount(){
     axios.get("/api/profile/details", { params: { id: this.props.match.params.id } }).then(res => this.setState({ res: res }));
+
+    //socket.io
+    this.socket = io('http://localhost:5000');
+    this.socket.on('connect', () => console.log('connected!'));
   }
   render(){
+    this.state.messages.map((i) => console.log(i));
     // console.log(this.state);
     if(!this.state.res.data){
       return <div></div>

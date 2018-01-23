@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
+const http = require('http');
 const passport = require("passport");
 const bodyParser = require('body-parser');
 const keys = require("./config/keys");
+const socketIO = require('socket.io');
 
 require("./models/User.js");
 require("./services/passport.js");
@@ -46,5 +48,20 @@ if (process.env.NODE_ENV === 'production'){
 /// PORT LISTEN ///
 ///////////////////
 
+var server = http.createServer(app);
+var io = socketIO(server);
+
+
+io.on('connection', socket => {
+  // socket.on('message', body => {
+  //   socket.broadcast.emit('message', {
+  //     body,
+  //     from: socket.id.slice(8)
+  //   })
+  // })
+
+  console.log('connected');
+});
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+server.listen(PORT);
