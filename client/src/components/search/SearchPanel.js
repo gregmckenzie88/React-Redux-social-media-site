@@ -10,17 +10,17 @@ class SearchPanel extends Component {
         </div>
         <div className="panel-body">
 
-          <label for="minimum-age">Min Age</label>
+          <label htmlFor="minimum-age">Min Age</label>
           <div style={{marginBottom: '10px'}} className="input-group">
             <input type="text" className="form-control" id="minimum-age" aria-describedby="basic-addon3" />
           </div>
 
-          <label for="maximum-age">Max Age</label>
+          <label htmlFor="maximum-age">Max Age</label>
           <div style={{marginBottom: '10px'}} className="input-group">
             <input type="text" className="form-control" id="maximum-age" aria-describedby="basic-addon3" />
           </div>
 
-          <label for="city">City</label>
+          <label htmlFor="city">City</label>
           <div style={{marginBottom: '10px'}} className="input-group">
             <input type="text" className="form-control" id="city" aria-describedby="basic-addon3" />
           </div>
