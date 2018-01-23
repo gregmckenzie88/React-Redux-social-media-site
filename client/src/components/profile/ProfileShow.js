@@ -17,7 +17,7 @@ class ProfileShow extends Component {
     axios.get("/api/profile/details", { params: { id: this.props.match.params.id } }).then(res => this.setState({ res: res }));
 
     //socket.io
-    this.socket = io('http://localhost:5000');
+    this.socket = io('https://dry-ocean-38514.herokuapp.com');
     this.socket.on('connect', () => console.log('connected!'));
   }
   render(){
