@@ -23,11 +23,12 @@ class HeaderAuth extends Component {
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a href="/api/logout">Log Out</a></li>
+              {/* <li><a href="/api/logout">Log Out</a></li> */}
               <li><Link to='/'>Dashboard</Link></li>
               <li><Link to='/search/talent'>Search Talent</Link></li>
             </ul>
-            {this.renderPersonalization()}
+            {/* {this.renderPersonalization()} */}
+            <p className="navbar-text navbar-right"><a href="/api/logout">Log Out</a></p>
           </div>
 
         </div>
