@@ -27,7 +27,7 @@ class ProfileShow extends Component {
     return(
       <div className="container">
         <div className="row">
-          <div className="col-xs-8 col-md-8">
+          <div className="col-xs-8 col-md-6">
             <h1>{this.state.res.data.profile.usernameName}</h1>
 
             <h3>Age</h3>
@@ -51,10 +51,9 @@ class ProfileShow extends Component {
             <h3>Most embarrasing thing you're willing to admit</h3>
             <p>{this.state.res.data.profile.embarrassingAdmition}</p>
           </div>
-          <div className="col-xs-8 col-md-4">
+          <div className="col-xs-8 col-md-6">
 
             <ChatBox />
-
 
           </div>
         </div>

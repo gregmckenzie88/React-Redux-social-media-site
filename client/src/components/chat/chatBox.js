@@ -17,8 +17,6 @@ class ChatBox extends Component {
     //LIVE
     this.socket = io('https://dry-ocean-38514.herokuapp.com');
 
-    // console.log(this.props.user);
-
     //DEV
     // this.socket = io('http://localhost:5000');
 
@@ -56,6 +54,19 @@ class ChatBox extends Component {
         $('[name=message]').val('');
       })
 
+      var locationButton = $('#send-location');
+      locationButton.on('click', () => {
+        if(!navigator.geolocation){
+          return alert('Geoloaction not supported by your browser');
+        }
+
+        navigator.geolocation.getCurrentPosition((position) => {
+          console.log(position);
+        }, () => {
+          alert('Unable to fetch location.');
+        })
+      });
+
     });
 
 
@@ -69,7 +80,6 @@ class ChatBox extends Component {
       <div className="panel panel-default">
         <div className="panel-heading">Chat with User</div>
         <div className="panel-body">
-          Chatbox
 
           <ul id="messages">
 
@@ -79,8 +89,9 @@ class ChatBox extends Component {
 
             <input id="message-text" name="message" type="text" className="form-control" placeholder="Message" aria-describedby="basic-addon1" />
 
-            <span className="input-group-addon" id="basic-addon1"><button>Send</button></span>
+            <span className="input-group-addon" id="basic-addon1"><button style={{background: 'none', border: 'none'}}>Send</button></span>
           </form>
+          <button id="send-location">Send Location</button>
         </div>
       </div>
     );
