@@ -12,8 +12,8 @@ export const submitProfile = (values, history) => async dispatch => {
   const res = await axios.post('/api/profile', values);
 
   dispatch({ type: FETCH_USER, payload: res.data });
-  history.push('/');
 
+  window.location.href = '/';
 };
 
 export const fetchSearchResults = () => async dispatch => {

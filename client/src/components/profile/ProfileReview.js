@@ -5,6 +5,7 @@ import * as actions from '../../actions';
 
 const ProfileReview = ({ onCancel, formValues, submitProfile, history }) => {
 
+
   const { usernameName,
           city,
           description,
@@ -15,6 +16,7 @@ const ProfileReview = ({ onCancel, formValues, submitProfile, history }) => {
           imdb,
           vimeo,
           youTube } = formValues;
+
   return (
     <div>
       <h1>Please confirm your entires</h1>
@@ -54,6 +56,7 @@ const ProfileReview = ({ onCancel, formValues, submitProfile, history }) => {
     </div>
   );
 };
+
 
 function mapStateToProps(state){
     return {
