@@ -3,14 +3,9 @@ import { reduxForm, Field } from "redux-form";
 import { Link } from 'react-router-dom';
 import ProfileField from "./ProfileField.js";
 
-// import { connect } from 'react-redux';
-
 class ProfileForm extends Component {
 
-
-
   renderFields(props) {
-    console.log('props ', this.props);
     return (
       <div>
         <Field
@@ -100,8 +95,6 @@ function validate(values){
   // if(!values.lastName){
   //   errors.lastName = "What's your last name?"
   // }
-
-
   return errors;
 }
 
