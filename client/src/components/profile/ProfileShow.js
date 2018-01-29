@@ -15,11 +15,10 @@ class ProfileShow extends Component {
     axios.get("/api/profile/details", { params: { id: this.props.match.params.id } }).then(res => this.setState({ res: res }));
 
   }
-  render(props){
-    if(!this.state.res.data){
-      return <div></div>
-    }
 
+
+
+  renderFields(){
     const { usernameName,
             city,
             description,
@@ -30,13 +29,88 @@ class ProfileShow extends Component {
             imdb,
             vimeo,
             youTube } = this.state.res.data.profile;
+
+    const values = [
+      {
+        label: 'User Name',
+        text: usernameName
+      },
+      {
+        label: 'City',
+        text: city
+      },
+      {
+        label: 'Description',
+        text: description
+      },
+      {
+        label: 'Primary Discipline',
+        text: primary
+      },
+      {
+        label: 'Additional Skills',
+        text: additionalSkills
+      },
+      {
+        label: 'Equipment',
+        text: equipment
+      },
+      {
+        label: 'Unions',
+        text: unions
+      },
+
+      {
+        label: 'IMDB',
+        text: imdb
+      },
+      {
+        label: 'Vimeo',
+        text: vimeo
+      },
+      {
+        label: 'YouTube',
+        text: youTube
+      }
+    ]
+
+    return values.filter( i => i.text).map( (i) => {
+      return (
+        <div key={i.label}>
+          <h3>{i.label}</h3>
+          <p>{i.text}</p>
+        </div>
+      );
+    });
+
+  }
+
+
+
+  render(props){
+    if(!this.state.res.data){
+      return <div></div>
+    }
+
+    // const { usernameName,
+    //         city,
+    //         description,
+    //         primary,
+    //         additionalSkills,
+    //         equipment,
+    //         unions,
+    //         imdb,
+    //         vimeo,
+    //         youTube } = this.state.res.data.profile;
     return(
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-md-6">
-            <h1 style={{marginTop: '0'}}>{usernameName}</h1>
+            <h1 style={{marginTop: '0'}}>{this.state.res.data.profile.usernameName}</h1>
 
-            <h3>City</h3>
+            {this.renderFields()}
+
+            {/* <h3>City</h3>
             <p>{city}</p>
 
             <h3>Description</h3>
@@ -61,12 +135,12 @@ class ProfileShow extends Component {
             <p>{vimeo}</p>
 
             <h3>YouTube</h3>
-            <p>{youTube}</p>
+            <p>{youTube}</p> */}
 
           </div>
           <div className="col-xs-12 col-md-6">
 
-            <ChatBox chatPartner={usernameName} targetUserId={this.props.match.params.id} />
+            <ChatBox chatPartner={this.state.res.data.profile.usernameName} targetUserId={this.props.match.params.id} />
 
           </div>
         </div>
