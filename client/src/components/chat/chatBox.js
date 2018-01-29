@@ -42,10 +42,10 @@ class ChatBox extends Component {
 
 
     //LIVE
-    // this.socket = io('https://dry-ocean-38514.herokuapp.com');
+    this.socket = io('https://dry-ocean-38514.herokuapp.com');
 
     //DEV
-    this.socket = io('http://localhost:5000');
+    // this.socket = io('http://localhost:5000');
 
     this.socket.on('connect', () => {
       this.socket.emit('join', roomString, (err) => {
