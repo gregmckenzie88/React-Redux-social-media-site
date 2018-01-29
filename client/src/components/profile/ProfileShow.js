@@ -8,52 +8,65 @@ class ProfileShow extends Component {
   constructor(props){
     super(props)
     this.state = {
-      res: {},
-      //for socket.io
-      messages: []
+      res: {}
     };
   }
   componentDidMount(){
     axios.get("/api/profile/details", { params: { id: this.props.match.params.id } }).then(res => this.setState({ res: res }));
 
   }
-  render(){
-    this.state.messages.map((i) => console.log(i));
-    // console.log(this.state);
+  render(props){
     if(!this.state.res.data){
       return <div></div>
     }
 
+    const { usernameName,
+            city,
+            description,
+            primary,
+            additionalSkills,
+            equipment,
+            unions,
+            imdb,
+            vimeo,
+            youTube } = this.state.res.data.profile;
     return(
       <div className="container">
         <div className="row">
-          <div className="col-xs-8 col-md-6">
-            <h1>{this.state.res.data.profile.usernameName}</h1>
-
-            <h3>Age</h3>
-            <p>{this.state.res.data.profile.age}</p>
+          <div className="col-xs-12 col-md-6">
+            <h1 style={{marginTop: '0'}}>{usernameName}</h1>
 
             <h3>City</h3>
-            <p>{this.state.res.data.profile.city}</p>
+            <p>{city}</p>
 
-            <h3>Gender</h3>
-            <p>{this.state.res.data.profile.gender}</p>
+            <h3>Description</h3>
+            <p>{description}</p>
 
-            <h3>Looking For</h3>
-            <p>{this.state.res.data.profile.lookingFor}</p>
+            <h3>Primary Discipline</h3>
+            <p>{primary}</p>
 
-            <h3>Headline</h3>
-            <p>{this.state.res.data.profile.headline}</p>
+            <h3>Additional Skills</h3>
+            <p>{additionalSkills}</p>
 
-            <h3>Self Summary</h3>
-            <p>{this.state.res.data.profile.selfSummary}</p>
+            <h3>Equipment</h3>
+            <p>{equipment}</p>
 
-            <h3>Most embarrasing thing you're willing to admit</h3>
-            <p>{this.state.res.data.profile.embarrassingAdmition}</p>
+            <h3>Unions</h3>
+            <p>{unions}</p>
+
+            <h3>imdb</h3>
+            <p>{imdb}</p>
+
+            <h3>Vimeo</h3>
+            <p>{vimeo}</p>
+
+            <h3>YouTube</h3>
+            <p>{youTube}</p>
+
           </div>
-          <div className="col-xs-8 col-md-6">
+          <div className="col-xs-12 col-md-6">
 
-            <ChatBox />
+            <ChatBox chatPartner={usernameName} targetUserId={this.props.match.params.id} />
 
           </div>
         </div>

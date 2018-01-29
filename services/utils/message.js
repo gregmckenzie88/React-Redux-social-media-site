@@ -1,9 +1,13 @@
-var generateMessage = (from, text) => {
+// const moment = require('moment');
+
+var generateMessage = (from, text, room, createdAt) => {
+  // const createdAt = moment().valueOf();
   return {
     from,
     text,
-    createdAt: new Date().getTime()
+    room,
+    createdAt
   };
 };
 
-module.exports = {generateMessage};
+module.exports = { generateMessage };

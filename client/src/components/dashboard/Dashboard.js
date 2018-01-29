@@ -4,7 +4,24 @@ import { Link } from 'react-router-dom';
 
 
 class Dashboard extends Component {
+  completeProfile(){
+    if(!this.props.auth.profile){
+      return (
+        <div className="panel-body">
+          <h3 style={{marginTop: '0'}}>Welcome to Flick Starter!</h3>
+          <Link to='/profile/new'>Click here to build your profile</Link>
+        </div>
+      );
+    } else {
+      return (
+        <div className="panel-body">
+          <Link to='/profile/new'>Edit your profile</Link>
+        </div>
+      );
+    }
+  }
   render(){
+    console.log(this.props);
     return (
       <div className="container-fluid container">
         <div className="row">
@@ -16,9 +33,8 @@ class Dashboard extends Component {
               <div className="panel-heading">
                 <h3 className="panel-title">Profile</h3>
               </div>
-              <div className="panel-body">
-                <Link to='/profile/new'>Build your profile</Link>
-              </div>
+              {this.completeProfile()}
+
             </div>
 
 

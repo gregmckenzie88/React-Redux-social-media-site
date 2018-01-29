@@ -3,12 +3,14 @@ import { reduxForm, Field } from "redux-form";
 import { Link } from 'react-router-dom';
 import ProfileField from "./ProfileField.js";
 
+// import { connect } from 'react-redux';
+
 class ProfileForm extends Component {
 
 
 
   renderFields(props) {
-    console.log(this.props);
+    console.log('props ', this.props);
     return (
       <div>
         <Field
@@ -19,44 +21,56 @@ class ProfileForm extends Component {
         />
         <Field
           type="text"
-          name="age"
-          label="Age"
-          component={ProfileField}
-        />
-        <Field
-          type="text"
           name="city"
           label="City"
           component={ProfileField}
         />
         <Field
           type="text"
-          name="gender"
-          label="Gender"
+          name="description"
+          label="Description"
           component={ProfileField}
         />
         <Field
           type="text"
-          name="lookingFor"
-          label="Looking for"
+          name="primary"
+          label="Primary Discipline"
           component={ProfileField}
         />
         <Field
           type="text"
-          name="headline"
-          label="Headline"
+          name="additionalSkills"
+          label="Additional Skills"
           component={ProfileField}
         />
         <Field
           type="text"
-          name="selfSummary"
-          label="Self Summary"
+          name="equipment"
+          label="Equipment"
           component={ProfileField}
         />
         <Field
           type="text"
-          name="embarrassingAdmition"
-          label="Most Embarssing thing you're willing to admit"
+          name="unions"
+          label="Unions"
+          component={ProfileField}
+        />
+        <Field
+          type="text"
+          name="imdb"
+          label="Link to IMDB"
+          component={ProfileField}
+        />
+        <Field
+          type="text"
+          name="vimeo"
+          label="Link to Vimeo"
+          component={ProfileField}
+        />
+        <Field
+          type="text"
+          name="youTube"
+          label="Link to YouTube"
           component={ProfileField}
         />
       </div>
@@ -79,13 +93,13 @@ class ProfileForm extends Component {
 function validate(values){
   const errors = {};
 
-  if(!values.firstName){
-    errors.firstName = "What's your first name?"
-  }
-
-  if(!values.lastName){
-    errors.lastName = "What's your last name?"
-  }
+  // if(!values.firstName){
+  //   errors.firstName = "What's your first name?"
+  // }
+  //
+  // if(!values.lastName){
+  //   errors.lastName = "What's your last name?"
+  // }
 
 
   return errors;

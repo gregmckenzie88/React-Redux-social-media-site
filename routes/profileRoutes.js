@@ -30,21 +30,23 @@ module.exports = app => {
     "/api/profile",
     // include requireLogin middlewear
     async (req, res) => {
-      const { firstName, lastName } = req.body;
+      const { firstName, lastName, usernameName, city, description, equipment, unions, primary, additionalSkills, imdb, vimeo, youTube } = req.body;
 
       // console.log(req.user.id);
 
       //find current user from ID
       User.findByIdAndUpdate(req.user.id, {
         profile: {
-          usernameName: req.body.usernameName,
-          age: req.body.age,
-          city: req.body.city,
-          gender: req.body.gender,
-          lookingFor: req.body.lookingFor,
-          headline: req.body.headline,
-          selfSummary: req.body.selfSummary,
-          embarrassingAdmition: req.body.embarrassingAdmition
+          usernameName,
+          city,
+          description,
+          primary,
+          additionalSkills,
+          equipment,
+          unions,
+          imdb,
+          vimeo,
+          youTube
         }
       }).then(() => User.save());
 

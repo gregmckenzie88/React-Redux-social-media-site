@@ -4,33 +4,50 @@ import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 const ProfileReview = ({ onCancel, formValues, submitProfile, history }) => {
+
+  const { usernameName,
+          city,
+          description,
+          primary,
+          additionalSkills,
+          equipment,
+          unions,
+          imdb,
+          vimeo,
+          youTube } = formValues;
   return (
     <div>
       <h1>Please confirm your entires</h1>
 
       <h3>User Name</h3>
-      <p>{formValues.usernameName}</p>
-
-      <h3>Age</h3>
-      <p>{formValues.age}</p>
+      <p>{usernameName}</p>
 
       <h3>City</h3>
-      <p>{formValues.city}</p>
+      <p>{city}</p>
 
-      <h3>Gender</h3>
-      <p>{formValues.gender}</p>
+      <h3>Description</h3>
+      <p>{description}</p>
 
-      <h3>Looking For</h3>
-      <p>{formValues.lookingFor}</p>
+      <h3>Primary Discipline</h3>
+      <p>{primary}</p>
 
-      <h3>Headline</h3>
-      <p>{formValues.headline}</p>
+      <h3>Additional Skills</h3>
+      <p>{additionalSkills}</p>
 
-      <h3>Self Summary</h3>
-      <p>{formValues.selfSummary}</p>
+      <h3>Equipment</h3>
+      <p>{equipment}</p>
 
-      <h3>Most embarrasing thing you're willing to admit</h3>
-      <p>{formValues.embarrassingAdmition}</p>
+      <h3>Unions</h3>
+      <p>{unions}</p>
+
+      <h3>IMDB</h3>
+      <p>{imdb}</p>
+
+      <h3>Vimeo</h3>
+      <p>{vimeo}</p>
+
+      <h3>YouTube</h3>
+      <p>{youTube}</p>
 
       <button className="btn btn-danger"  onClick={onCancel}>Back</button>
       <button className="btn btn-default" onClick={() => submitProfile(formValues, history)} >Submit</button>

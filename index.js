@@ -5,9 +5,9 @@ const http = require('http');
 const passport = require("passport");
 const bodyParser = require('body-parser');
 const keys = require("./config/keys");
-// const socketIO = require('socket.io');
 
 require("./models/User.js");
+require("./models/Chatroom.js");
 require("./services/passport.js");
 
 mongoose.connect(keys.mongoURI);
@@ -34,6 +34,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes.js")(app);
 require("./routes/profileRoutes.js")(app);
+require("./routes/chatRoutes.js")(app);
 
 if (process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'));

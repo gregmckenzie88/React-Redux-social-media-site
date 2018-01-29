@@ -1,28 +1,23 @@
 const socketIO = require('socket.io');
-const {generateMessage} = require('./utils/message');
+const { generateMessage } = require('./utils/message');
+const moment = require('moment');
 
 module.exports = server => {
   var io = socketIO(server);
 
   io.on('connection', socket => {
-    console.log('user connected');
 
-    socket.emit('newMessage', generateMessage('Admin', 'Welcome to the chat app'));
-
-    socket.broadcast.emit('newMessage', generateMessage('Admin', 'New User Joined'));
-
-    // INCOMING FROM CLIENT
-    socket.on('createMessage', (message, callback) => {
-      console.log('createMessage', message);
-      io.emit('newMessage', generateMessage(message.from, message.text));
-      callback('This is from the server!');
+    socket.on('join', (room) => {
+      socket.join(room);
     });
 
+    // HANDLE MESSAGES
+    socket.on('createMessage', (message, callback) => {
+      const createdAt = moment().valueOf();
+      const { from, text, room } = message;
+      io.to(message.room).emit('newMessage', generateMessage(from, text, room, createdAt));
+      callback({ from, text, room, createdAt });
+    });
 
-
-    //OUTGOING TO CLIENT
-
-
-    socket.on('disconnect', () => console.log('user disconnected'))
   });
-}
+};

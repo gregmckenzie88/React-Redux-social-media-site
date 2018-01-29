@@ -4,7 +4,7 @@ class SearchPanel extends Component {
   render(){
 
     return(
-      <div className="panel panel-info">
+      <div className="panel panel-default">
         <div className="panel-heading">
           <h3 className="panel-title">Refine Search</h3>
         </div>

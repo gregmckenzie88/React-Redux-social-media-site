@@ -10,13 +10,15 @@ const userSchema = new Schema({
   },
   profile: {
     usernameName: String,
-    age: String,
     city: String,
-    gender: String,
-    lookingFor: String,
-    headline: String,
-    selfSummary: String,
-    embarrassingAdmition: String
+    description: String,
+    primary: String,
+    additionalSkills: String,
+    equipment: String,
+    unions: String,
+    imdb: String,
+    vimeo: String,
+    youTube: String
   }
 });
 
