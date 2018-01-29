@@ -72,6 +72,10 @@ class ChatBox extends Component {
       $('#message-form').on("submit", (e) => {
         e.preventDefault();
 
+
+        console.log(this.props.auth.profile);
+
+
         if(chatInput.val()){
           this.socket.emit('createMessage', {
             from: this.props.auth.profile.usernameName,
