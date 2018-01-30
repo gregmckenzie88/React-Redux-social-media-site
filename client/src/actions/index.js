@@ -16,12 +16,7 @@ export const submitProfile = (values, history) => async dispatch => {
   window.location.href = '/';
 };
 
-export const fetchSearchResults = () => async dispatch => {
-  const res = await axios.get("/api/search");
+export const fetchSearchResults = (params) => async dispatch => {
+  const res = await axios.get("/api/search", params);
   dispatch({ type: FETCH_SEARCH_RESULTS, payload: res.data })
 };
-
-// export const fetchProfileDetails = (id) => async dispatch => {
-//   const res = await axios.get("/api/profile/details", { params: { id: id } });
-//   dispatch({ type: FETCH_PROFILE_DETAILS, payload: res.data })
-// };

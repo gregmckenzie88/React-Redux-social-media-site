@@ -4,13 +4,15 @@ import SearchResults from './SearchResults.js';
 import { connect } from 'react-redux';
 
 class SearchTalent extends Component {
+  handleSubmit(city, focus){
+    console.log(city, focus);
+  }
   render(){
-
     return(
       <div className="container">
         <div className="row">
           <div className="col-xs-4 col-md-4">
-            <SearchPanel />
+            <SearchPanel handleSubmit={this.handleSubmit} />
           </div>
           <div className="col-xs-8 col-md-8">
             <SearchResults currentUser={this.props.auth} />

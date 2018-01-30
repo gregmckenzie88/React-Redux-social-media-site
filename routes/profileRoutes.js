@@ -6,7 +6,17 @@ module.exports = app => {
     "/api/search",
     //include requirelogin middlewear
     async (req, res) => {
-      const users = await User.find({});
+
+      let users = {};
+
+      if(req.query.focus || req.query.city){
+
+        users = await User.
+          find({ $or: [ { 'profile.city': req.query.city}, { 'profile.primary': req.query.focus } ] });
+      } else {
+        // find users with no params
+        users = await User.find({});
+      }
 
       //need pagination!!!
 

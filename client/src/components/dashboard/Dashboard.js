@@ -44,24 +44,19 @@ class Dashboard extends Component {
                 <h3 className="panel-title">Profile</h3>
               </div>
               {this.completeProfile()}
-
             </div>
 
 
           </div>
           <div className="col-xs-8 col-md-8">
-
-
             <div className="panel panel-default">
               <div className="panel-heading">
-                <h3 className="panel-title">Panel title</h3>
+                <h3 className="panel-title">What's New</h3>
               </div>
               <div className="panel-body">
                 Panel content
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
