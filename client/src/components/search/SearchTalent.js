@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchPanel from './SearchPanel.js';
 import SearchResults from './SearchResults.js';
+import { connect } from 'react-redux';
 
 class SearchTalent extends Component {
   render(){
@@ -12,7 +13,7 @@ class SearchTalent extends Component {
             <SearchPanel />
           </div>
           <div className="col-xs-8 col-md-8">
-            <SearchResults />
+            <SearchResults currentUser={this.props.auth} />
           </div>
         </div>
       </div>
@@ -21,4 +22,8 @@ class SearchTalent extends Component {
 }
 
 
-export default SearchTalent;
+function mapStateToProps({ auth }){
+  return { auth }
+}
+
+export default connect(mapStateToProps)(SearchTalent);

@@ -7,20 +7,35 @@ class SearchResults extends Component {
   componentDidMount() {
     this.props.fetchSearchResults();
   }
+
+  componentWillReceiveProps(){
+    this.setState(this.state);
+  }
   //TODO: filter out your own profile
   renderSearchResults(){
-    return this.props.searchResults.filter(user => user.profile).map(user => {
+
+    const users = this.props.searchResults.filter(user => user._id !== this.props.currentUser._id);
+    if(users.length === 0){
       return (
-        <Link style={{'display': 'inline-block', 'width': '100%', textDecoration: 'none'}} to={`/profile/details/${user._id}`} key={user._id} className="panel panel-default">
-          <div className="panel-heading">
-            <h3 className="panel-title">{user.profile.usernameName} -- {user.profile.city} -- {user.profile.age}</h3>
-          </div>
-          <div className="panel-body">
-            {user.profile.headline}
-          </div>
-        </Link>
+        <div>
+          {/* <h2 style={{marginTop: '100px', textAlign: 'center'}}>No Users is this city.</h2>
+          <h2 style={{marginTop: '0', textAlign: 'center'}}>Try another one?</h2> */}
+        </div>
       );
-    })
+    } else {
+      return this.props.searchResults.filter(user => user._id !== this.props.currentUser._id).map(user => {
+        return (
+          <Link style={{'display': 'inline-block', 'width': '100%', textDecoration: 'none'}} to={`/profile/details/${user._id}`} key={user._id} className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">{user.profile.usernameName}, {user.profile.primary} from {user.profile.city}</h3>
+            </div>
+            <div className="panel-body">
+              {user.profile.description}
+            </div>
+          </Link>
+        );
+      })
+    }
   }
 
   render(){

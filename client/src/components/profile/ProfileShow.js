@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ChatBox from '../chat/chatBox';
+import { connect } from 'react-redux';
+import DisabledChatBox from '../chat/disabledChatBox';
 
 import axios from 'axios';
 
@@ -109,7 +111,15 @@ class ProfileShow extends Component {
 
   }
 
+  renderChatBox(){
+    if (!this.props.auth.profile){
+      return <DisabledChatBox chatPartner={this.state.res.data.profile.usernameName}  />
+    } else {
+      return <ChatBox chatPartner={this.state.res.data.profile.usernameName} targetUserId={this.props.match.params.id} />;
+    }
 
+
+  }
 
   render(props){
     if(!this.state.res.data){
@@ -123,7 +133,7 @@ class ProfileShow extends Component {
             {this.renderFields()}
           </div>
           <div className="col-xs-12 col-md-6">
-            <ChatBox chatPartner={this.state.res.data.profile.usernameName} targetUserId={this.props.match.params.id} />
+            {this.renderChatBox()}
           </div>
         </div>
         <Link className="btn btn-danger" to='/search/talent'>Back</Link>
@@ -132,5 +142,8 @@ class ProfileShow extends Component {
   };
 }
 
+function mapStateToProps({ auth }){
+  return { auth }
+}
 
-export default ProfileShow;
+export default connect(mapStateToProps)(ProfileShow);
