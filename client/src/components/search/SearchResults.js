@@ -4,12 +4,21 @@ import { fetchSearchResults } from '../../actions';
 import { Link } from 'react-router-dom';
 
 class SearchResults extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      style: { display: 'none' }
+    }
+  }
   componentDidMount() {
     this.props.fetchSearchResults();
   }
 
   componentWillReceiveProps(){
-    this.setState(this.state);
+    this.setState({
+      style: { display: 'block' }
+    });
   }
   //TODO: filter out your own profile
   renderSearchResults(){
@@ -17,9 +26,9 @@ class SearchResults extends Component {
     const users = this.props.searchResults ? this.props.searchResults.filter(user => user._id !== this.props.currentUser._id) : null;
     if(users.length === 0){
       return (
-        <div>
-          <h2 style={{marginTop: '100px', textAlign: 'center'}}>No Users is this city.</h2>
-          <h2 style={{marginTop: '0', textAlign: 'center'}}>Try another one?</h2>
+        <div style={this.state.style}>
+          <h2 style={{marginTop: '100px', textAlign: 'center'}}>No Users found</h2>
+          <h3 style={{marginTop: '0', textAlign: 'center'}}>Broaden search criteria!</h3>
         </div>
       );
     } else {
