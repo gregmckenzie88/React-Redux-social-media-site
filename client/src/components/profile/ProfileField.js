@@ -10,7 +10,7 @@ export default ({ input, label, meta: { error, touched } }) => {
         <input type="text" className="form-control" {...input}  />
       </div>
 
-      <div>
+      <div style={{color: '#b92c28', fontWeight: 'bold'}}>
         {touched && error}
       </div>
     </div>

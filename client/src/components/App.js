@@ -24,7 +24,7 @@ class App extends Component {
   }
   render(){
     return (
-      <div>
+      <div style={{paddingBottom: '40px'}}>
         <BrowserRouter>
           <div>
             <Header />

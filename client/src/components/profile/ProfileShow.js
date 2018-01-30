@@ -75,6 +75,30 @@ class ProfileShow extends Component {
     ]
 
     return values.filter( i => i.text).map( (i) => {
+      if (i.label === 'IMDB'){
+        return(
+          <div key={i.label}>
+            <a style={{textDecoration: 'none', fontSize: '18px', display: 'inline-block', marginBottom: '20px', marginTop: '10px'}} target="_blank" href={i.text}>My work on {i.label}</a>
+          </div>
+        );
+      }
+
+      if (i.label === 'Vimeo'){
+        return(
+          <div key={i.label}>
+            <a style={{textDecoration: 'none', fontSize: '18px', display: 'inline-block', marginBottom: '20px', marginTop: '10px'}} target="_blank" href={i.text}>My work on {i.label}</a>
+          </div>
+        );
+      }
+
+      if (i.label === 'YouTube'){
+        return(
+          <div key={i.label}>
+            <a style={{textDecoration: 'none', fontSize: '18px', display: 'inline-block', marginBottom: '20px', marginTop: '10px'}} target="_blank" href={i.text}>My work on {i.label}</a>
+          </div>
+        );
+      }
+
       return (
         <div key={i.label}>
           <h3>{i.label}</h3>
@@ -91,64 +115,18 @@ class ProfileShow extends Component {
     if(!this.state.res.data){
       return <div></div>
     }
-
-    // const { usernameName,
-    //         city,
-    //         description,
-    //         primary,
-    //         additionalSkills,
-    //         equipment,
-    //         unions,
-    //         imdb,
-    //         vimeo,
-    //         youTube } = this.state.res.data.profile;
     return(
       <div className="container">
         <div className="row">
           <div className="col-xs-12 col-md-6">
             <h1 style={{marginTop: '0'}}>{this.state.res.data.profile.usernameName}</h1>
-
             {this.renderFields()}
-
-            {/* <h3>City</h3>
-            <p>{city}</p>
-
-            <h3>Description</h3>
-            <p>{description}</p>
-
-            <h3>Primary Discipline</h3>
-            <p>{primary}</p>
-
-            <h3>Additional Skills</h3>
-            <p>{additionalSkills}</p>
-
-            <h3>Equipment</h3>
-            <p>{equipment}</p>
-
-            <h3>Unions</h3>
-            <p>{unions}</p>
-
-            <h3>imdb</h3>
-            <p>{imdb}</p>
-
-            <h3>Vimeo</h3>
-            <p>{vimeo}</p>
-
-            <h3>YouTube</h3>
-            <p>{youTube}</p> */}
-
           </div>
           <div className="col-xs-12 col-md-6">
-
             <ChatBox chatPartner={this.state.res.data.profile.usernameName} targetUserId={this.props.match.params.id} />
-
           </div>
         </div>
-
-
         <Link className="btn btn-danger" to='/search/talent'>Back</Link>
-
-
       </div>
     );
   };

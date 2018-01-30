@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PanelProfile from './PanelProfile';
 
 
 class Dashboard extends Component {
+
+  renderProfile(){
+    if(this.props.auth){
+      return <PanelProfile />;
+    }
+  }
+
   completeProfile(){
     if(!this.props.auth.profile){
       return (
@@ -15,13 +23,15 @@ class Dashboard extends Component {
     } else {
       return (
         <div className="panel-body">
-          <Link to='/profile/new'>Edit your profile</Link>
+          <Link style={{marginBottom: '15px', display: 'inline-block'}} to='/profile/new'>
+            Edit your profile
+          </Link>
+          {this.renderProfile()}
         </div>
       );
     }
   }
   render(){
-    console.log(this.props);
     return (
       <div className="container-fluid container">
         <div className="row">

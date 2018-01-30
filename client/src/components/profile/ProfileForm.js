@@ -94,13 +94,27 @@ class ProfileForm extends Component {
 function validate(values){
   const errors = {};
 
-  // if(!values.firstName){
-  //   errors.firstName = "What's your first name?"
-  // }
-  //
-  // if(!values.lastName){
-  //   errors.lastName = "What's your last name?"
-  // }
+  const goodUrl = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})/;
+
+  if(!values.usernameName){
+    errors.usernameName = "Username is required"
+  }
+
+  if(!values.city){
+    errors.city = "City is required"
+  }
+
+  if(values.youTube && !values.youTube.match(goodUrl)){
+    errors.youTube = "Please enter a valid URL"
+  }
+
+  if(values.vimeo && !values.vimeo.match(goodUrl)){
+    errors.vimeo = "Please enter a valid URL"
+  }
+
+  if(values.imdb && !values.imdb.match(goodUrl)){
+    errors.imdb = "Please enter a valid URL"
+  }
   return errors;
 }
 
