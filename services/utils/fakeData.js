@@ -5,6 +5,7 @@ const faker = require('faker');
 module.exports = async () => {
   // check if there are zero users
   const res = await User.find({});
+  //
 
   // if no users, fill users model with ten profiles
   const focuses = ['Director', 'Producer', 'Editor', 'Screenwriter', 'Actor', 'Art Director'];

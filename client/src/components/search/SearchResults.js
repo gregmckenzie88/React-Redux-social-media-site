@@ -22,8 +22,9 @@ class SearchResults extends Component {
   }
   //TODO: filter out your own profile
   renderSearchResults(){
-
-    const users = this.props.searchResults ? this.props.searchResults.filter(user => user._id !== this.props.currentUser._id) : null;
+    console.log(this.props.searchResults)
+    console.log('this user', this.props.auth)
+    const users = this.props.searchResults ? this.props.searchResults.filter(user => user.profile).filter(user => user._id !== this.props.auth._id) : null;
     if(users.length === 0){
       return (
         <div style={this.state.style}>
@@ -32,7 +33,7 @@ class SearchResults extends Component {
         </div>
       );
     } else {
-      return this.props.searchResults.filter(user => user._id !== this.props.currentUser._id).map(user => {
+      return this.props.searchResults.filter(user => user.profile).filter(user => user._id !== this.props.auth._id).map(user => {
         return (
           <Link style={{'display': 'inline-block', 'width': '100%', textDecoration: 'none'}} to={`/profile/details/${user._id}`} key={user._id} className="panel panel-default">
             <div className="panel-heading">
@@ -55,7 +56,10 @@ class SearchResults extends Component {
 }
 
 function mapStateToProps(state){
-  return { searchResults: state.searchResults };
+  return {
+    searchResults: state.searchResults,
+    auth: state.auth
+   };
 }
 
 export default connect(mapStateToProps, { fetchSearchResults })(SearchResults);

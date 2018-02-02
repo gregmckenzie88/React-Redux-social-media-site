@@ -100,6 +100,10 @@ function validate(values){
     errors.usernameName = "Username is required"
   }
 
+  if(!values.primary){
+    errors.primary = "Primary focus is required"
+  }
+
   if(!values.city){
     errors.city = "City is required"
   }
