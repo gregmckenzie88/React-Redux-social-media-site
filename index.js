@@ -45,6 +45,9 @@ if (process.env.NODE_ENV === 'production'){
   })
 }
 
+
+require('./services/utils/fakeData.js')();
+
 ///////////////////
 /// PORT LISTEN ///
 ///////////////////

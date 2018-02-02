@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PanelProfile from './PanelProfile';
 import News from './News';
 import Messages from './Messages.js';
+import Greeting from './greeting.js';
 
 
 class Dashboard extends Component {
@@ -18,7 +19,7 @@ class Dashboard extends Component {
     if(!this.props.auth.profile){
       return (
         <div className="panel-body">
-          <h3 style={{marginTop: '0'}}>Welcome to Flick Starter!</h3>
+          <h3 style={{marginTop: '0'}}>Get Started Here!</h3>
           <Link to='/profile/new'>Click here to build your profile</Link>
         </div>
       );
@@ -51,7 +52,7 @@ class Dashboard extends Component {
 
           </div>
           <div className="col-xs-8 col-md-8">
-
+            <Greeting user={this.props.auth} />
             <News />
             <Messages />
 

@@ -25,13 +25,13 @@ class ProfileForm extends Component {
           <Field
             type="text"
             name="description"
-            label="Description"
+            label="Description -- Tell Us About Yourself!"
             component={ProfileField}
           />
           <Field
             type="text"
             name="primary"
-            label="Primary Discipline"
+            label="Primary Focus (Director, Producer, etc.)"
             component={ProfileField}
           />
           <Field

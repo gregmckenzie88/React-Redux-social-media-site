@@ -42,10 +42,10 @@ class ChatBox extends Component {
 
 
     //LIVE
-    // this.socket = io('https://dry-ocean-38514.herokuapp.com');
+    this.socket = io('https://dry-ocean-38514.herokuapp.com');
 
     //DEV
-    this.socket = io('http://localhost:5000');
+    // this.socket = io('http://localhost:5000');
 
     this.socket.on('connect', () => {
       this.socket.emit('join', roomString, (err) => {
@@ -102,7 +102,7 @@ class ChatBox extends Component {
           <li key={msg.createdAt} style={{display: 'flex', flexDirection: 'column'}}>
             <div style={{display: 'flex', alignItems:'center'}}>
               <h4 style={{marginRight:'5px'}}>{msg.from} </h4>
-              <h6>{moment(msg.createdAt).format('h:mm a')}</h6>
+              <h6>{moment(msg.createdAt).format('LLLL')}</h6>
             </div>
             <p>{msg.text}</p>
           </li>
