@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PanelProfile from './PanelProfile';
+import News from './News';
+import Messages from './Messages.js';
 
 
 class Dashboard extends Component {
@@ -49,14 +51,10 @@ class Dashboard extends Component {
 
           </div>
           <div className="col-xs-8 col-md-8">
-            <div className="panel panel-default">
-              <div className="panel-heading">
-                <h3 className="panel-title">What's New</h3>
-              </div>
-              <div className="panel-body">
-                Panel content
-              </div>
-            </div>
+
+            <News />
+            <Messages />
+
           </div>
         </div>
       </div>

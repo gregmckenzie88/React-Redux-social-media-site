@@ -14,9 +14,9 @@ module.exports = server => {
     // HANDLE MESSAGES
     socket.on('createMessage', (message, callback) => {
       const createdAt = moment().valueOf();
-      const { from, text, room } = message;
-      io.to(message.room).emit('newMessage', generateMessage(from, text, room, createdAt));
-      callback({ from, text, room, createdAt });
+      const { from, to, text, room } = message;
+      io.to(message.room).emit('newMessage', generateMessage(from, to, text, room, createdAt));
+      callback({ from, to, text, room, createdAt });
     });
 
   });

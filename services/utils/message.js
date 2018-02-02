@@ -1,9 +1,10 @@
 // const moment = require('moment');
 
-var generateMessage = (from, text, room, createdAt) => {
+var generateMessage = (from, to, text, room, createdAt) => {
   // const createdAt = moment().valueOf();
   return {
     from,
+    to,
     text,
     room,
     createdAt

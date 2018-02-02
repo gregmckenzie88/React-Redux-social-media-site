@@ -18,7 +18,9 @@ class SearchPanel extends Component {
             <input type="text" id="refine-city" className="form-control" aria-describedby="basic-addon3" />
           </div>
 
-          <label htmlFor="refine-focus">Focus</label>
+          <label htmlFor="refine-focus">Focus
+            <span style={{fontSize: '11px', marginLeft: '5px' }}>(Director, producer, etc.)</span>
+          </label>
           <div style={{marginBottom: '10px', width: '100%'}} className="input-group">
             <input type="text" className="form-control" id="refine-focus" aria-describedby="basic-addon3" />
           </div>

@@ -15,7 +15,6 @@ class ProfileShow extends Component {
   }
   componentDidMount(){
     axios.get("/api/profile/details", { params: { id: this.props.match.params.id } }).then(res => this.setState({ res: res }));
-
   }
 
 
